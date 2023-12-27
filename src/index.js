@@ -1,6 +1,13 @@
-import { createServer } from 'node:http'
-import { createReadStream } from 'node:fs'
-import { spawn } from 'node:child_process'
+import express from 'express';
+import { createServer } from 'node:http';
+import { createReadStream } from 'node:fs';
+import { spawn } from 'node:child_process';
+
+const app = express();
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 
 createServer(async (request, response) => {
   const headers = {
